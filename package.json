@@ -7,7 +7,12 @@
     "start": "node index.js",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest",
+    "prepare": "exit 0",
+    "prepublishOnly": "npm run lint",
+    "preversion": "npm run lint",
+    "version": "npm run lint && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "type": "module",
   "author": "",
