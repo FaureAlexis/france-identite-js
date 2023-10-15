@@ -8,9 +8,7 @@ on:
 
 jobs:
   lint-and-test:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js
@@ -23,3 +21,31 @@ jobs:
       run: npm run lint
     - name: Run tests
       run: npm test
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [lint-and-test]
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+          registry-url: 'https://registry.npmjs.org'
+      - name: Configure git user
+        run: |
+          git config --global user.name "france-identite-js CI"
+          git config --global user.email "alexis.faure@epitech.eu"s
+      - name: Install dependencies 
+        run: npm install
+      - name: Bump version
+        run: npm version patch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build
+        run: npm run build
+      - name: NPM CI
+        run: npm ci
+      - name: Publish to NPM
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
