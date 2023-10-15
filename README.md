@@ -10,4 +10,29 @@ npm install france-identite-js
 
 ## Usage
 
-see [example](./index.js)
+```javascript
+/* eslint-disable no-console */
+import verify from './lib/index.js';
+
+const verificationsTodo = [
+  {
+    user: 'Stéphane Gully',
+    file: 'attestation.pdf',
+  },
+  {
+    user: 'Yves Volvic',
+    file: 'attestation.pdf',
+  },
+  {
+    user: 'John Doe',
+    file: 'test.pdf',
+  },
+];
+
+const run = async () => {
+  const results = await verify(verificationsTodo);
+  console.log(results);
+};
+
+run();
+```
