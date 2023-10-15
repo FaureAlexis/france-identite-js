@@ -1,11 +1,6 @@
 {
-<<<<<<< HEAD
   "name": "france-identite-js",
   "version": "1.0.0",
-=======
-  "name": "meo-key",
-  "version": "1.0.1",
->>>>>>> 82d8edf599928779d8c4044ae547f90298821cbd
   "description": "",
   "main": "index.js",
   "scripts": {
