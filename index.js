@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import verify from './lib/index.js';
 
 const verificationsTodo = [
