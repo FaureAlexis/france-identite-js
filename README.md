@@ -2,6 +2,8 @@
 
 This is a JavaScript library to validate French identity using the governement new service [France Identité](https://france-identite.gouv.fr/).
 
+The lib is currently using Selenium, but I am currently working on using the API.
+
 ## Installation
 
 ```bash
